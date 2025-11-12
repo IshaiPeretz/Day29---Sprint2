@@ -3,19 +3,19 @@
 }
 
 .canvas-container {
-    width: 500px;
-    height: 500px;
+    width: 50vw;
+    
 }
 
 .image-gallery {
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    
+
 }
 
 
-.image-box{
+.image-box {
     max-width: 200px;
     max-height: 200px;
 }
@@ -27,5 +27,9 @@ canvas {
 
 img {
     width: 100%;
+}
+
+.main-layout {
+    display: grid;
 }
 

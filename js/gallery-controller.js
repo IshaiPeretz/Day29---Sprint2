@@ -11,7 +11,18 @@ function renderGallery() {
     elGallery.innerHTML = stringHTML.join('')
 }
 
-function onImgSelect(id){
+function onImgSelect(id) {
+    gElEditor.style.display = 'grid'
+    gElGallery.style.display = 'none'
+
     setImg(id)
     renderMeme()
+}
+
+
+function onShowGallery() {
+    gElEditor.style.display = 'none'
+    gElGallery.style.display = 'grid'
+
+
 }
