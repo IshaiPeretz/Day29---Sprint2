@@ -13,7 +13,7 @@ var gImgs = [
     { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', keywords: ['funny', 'cat'] },
     { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', keywords: ['funny', 'cat'] },
     { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', keywords: ['funny', 'cat'] },
- 
+
 ]
 
 var gMeme = {
@@ -81,3 +81,15 @@ function setImg(id) {
     gMeme.selectedImgId = id
 }
 
+function checkPosition(x, y) {
+
+
+    const lines = gMeme.lines
+    const idx = lines.findIndex(line => line.rect.x <= x && x <= line.rect.x + line.rect.width
+        && line.rect.y <= y && y <= line.rect.y + line.rect.height
+    )
+    if (idx !== -1) {
+        gMeme.selectedLineIdx = idx
+        renderMeme()
+    }
+}

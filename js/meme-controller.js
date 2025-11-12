@@ -27,29 +27,40 @@ function renderMeme() {
     img.onload = () => {
 
         renderImg(img)
-        
+
         meme.lines.forEach(line => {
             gCtx.font = `${line.size}px Arial`
             gCtx.fillStyle = line.color
-            gCtx.textAlign ='center'
-            
+            gCtx.textAlign = 'center'
+
             let x = gElCanvas.width / 2
-            let y 
-            
+            let y
+
             if (line.pos === 'top') y = 50
             else if (line.pos === 'bottom') y = gElCanvas.height - 50
-            else if (line.pos === 'center') y = gElCanvas.height /2
-            
+            else if (line.pos === 'center') y = gElCanvas.height / 2
+
             line.x = x
             line.y = y
-            
+
+            const textWidth = gCtx.measureText(line.txt).width
+
+            line.rect = {
+                x: line.x - textWidth / 2,
+                y: line.y - line.size,
+                width: textWidth,
+                height: line.size + 10
+            }
+
+
             gCtx.fillText(line.txt, x, y)
         })
-        if(!isUserTyping){
-        const currLine = meme.lines[meme.selectedLineIdx]
-        let textWidth = gCtx.measureText(currLine.txt).width
-        gCtx.fillStyle = ' rgba(0, 0, 0, 0.3)'
-        gCtx.fillRect(currLine.x-textWidth/2, currLine.y - currLine.size,textWidth , currLine.size+10)
+        if (!isUserTyping) {
+            const currLine = meme.lines[meme.selectedLineIdx]
+            gCtx.fillStyle = ' rgba(0, 0, 0, 0.3)'
+            const rect = currLine.rect
+            gCtx.fillRect(rect.x, rect.y, rect.width, rect.height)
+
         }
 
     }
@@ -96,4 +107,13 @@ function renderImg(img) {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
+
+function onClick(ev) {
+    const { offsetX, offsetY } = ev
+    console.log(offsetX, offsetY)
+    
+    checkPosition(offsetX, offsetY)
+
+
+}
 
