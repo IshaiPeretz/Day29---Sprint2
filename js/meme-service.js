@@ -1,3 +1,6 @@
+const gFirstLinePos = 50
+
+
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', keywords: ['funny', 'cat'] },
@@ -9,13 +12,21 @@ var gMeme = {
     selectedLineIdx: 0,
     lines:
         [{
-            txt: '',
+            txt: 'ABCasdasfasfasf',
             size: 20,
-            color: 'white'
-        }]
+            color: 'white',
+            pos: 'top'
+        }, {
+            txt: 'DEF',
+            size: 20,
+            color: 'yellow',
+            pos: 'bottom'
+        }
+        ]
 }
 
-function getImgs(){
+
+function getImgs() {
     return gImgs
 }
 function getMeme() {
@@ -23,6 +34,20 @@ function getMeme() {
     return gMeme
 }
 
+function addLine() {
+    const line = {
+        txt: 'GHI',
+        size: 20,
+        color: 'white',
+        pos: 'center'
+    }
+    gMeme.lines.push(line)
+}
+
+
+function switchLine() {
+    (gMeme.selectedLineIdx === gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx++
+}
 
 
 function getImgURL(id) {
@@ -34,16 +59,16 @@ function setLineText(text) {
 
 }
 
-function setMemeTxtColor(color){
+function setMemeTxtColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
- 
-function setFontSize(val){
-     gMeme.lines[gMeme.selectedLineIdx].size += val
+
+function setFontSize(val) {
+    gMeme.lines[gMeme.selectedLineIdx].size += val
 
 }
 
-function setImg(id){
+function setImg(id) {
     gMeme.selectedImgId = id
 }
 

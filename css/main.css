@@ -33,3 +33,19 @@ img {
     display: grid;
 }
 
+.main-header{
+    display: flex; 
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-list{
+    gap: 20px;
+
+}
+
+.logo{
+    font-size: 2.5em;
+}

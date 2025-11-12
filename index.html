@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/helpers.css">
 </head>
 
 <body class="main-layout" onload="onInit()">
 
-    <header>
+    <header class = "main-header flex align-items space-between">
         <div class="logo">Meme Generator</div>
         <nav class=nav-bar>
-            <ul>
+            <ul class = "nav-list flex clean-list">
                 <li> <a href="#" onclick="onShowGallery()"> Gallery </a></li>
                 <li><a href="#"> placeholder </a></li>
             </ul>
@@ -39,6 +40,8 @@
                     <input type="text" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
                     <button onclick="onChangeFontSize(2)">increase</button>
                     <button onclick="onChangeFontSize(-2)">decrease</button>
+                    <button onclick="onAddLine()">Add Line</button>
+                    <button onclick="onSwitchLine()">Switch Line</button>
                     <a href="#" class="btn" onclick="onDownloadImage(this)" download="my-meme.jpg">Download Meme</a>
                 </section>
             </div>

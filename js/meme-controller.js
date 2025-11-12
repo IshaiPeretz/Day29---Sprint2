@@ -15,6 +15,8 @@ function onInit() {
 
 }
 
+
+
 function renderMeme() {
 
     const meme = getMeme()
@@ -25,14 +27,29 @@ function renderMeme() {
     img.onload = () => {
 
         renderImg(img)
-
-        const line = meme.lines[0]
-        gCtx.font = `${line.size}px Arial`
-        gCtx.fillStyle = line.color
-        gCtx.textAlign = 'center'
-
-
-        gCtx.fillText(line.txt, gElCanvas.width / 2, 50)
+        
+        meme.lines.forEach(line => {
+            gCtx.font = `${line.size}px Arial`
+            gCtx.fillStyle = line.color
+            gCtx.textAlign ='center'
+            
+            let x = gElCanvas.width / 2
+            let y 
+            
+            if (line.pos === 'top') y = 50
+            else if (line.pos === 'bottom') y = gElCanvas.height - 50
+            else if (line.pos === 'center') y = gElCanvas.height /2
+            
+            line.x = x
+            line.y = y
+            
+            gCtx.fillText(line.txt, x, y)
+        })
+        const currLine = meme.lines[meme.selectedLineIdx]
+        let textWidth = gCtx.measureText(currLine.txt).width
+        gCtx.fillStyle = ' rgba(0, 0, 0, 0.5)'
+        gCtx.fillRect(currLine.x-textWidth/2, currLine.y - currLine.size,textWidth , currLine.size+5)
+        
 
     }
 }
@@ -52,6 +69,17 @@ function onChangeFontSize(val) {
     setFontSize(val)
     renderMeme()
 
+}
+
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function onSwitchLine() {
+    switchLine()
+    renderMeme()
 }
 
 function onDownloadImage(elLink) {
