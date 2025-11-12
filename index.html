@@ -10,16 +10,20 @@
 
 <body onload="onInit()">
 
-    <header>Meme Generator</header>
+    <header>
+        <div class="logo">Meme Generator</div>
+        <nav class=nav-bar>
+            <ul>
+                <li> <a href="#"> Gallery </a></li>
+                <li><a href="#"> placeholder </a></li>
+            </ul>
+
+        </nav>
+
+
+    </header>
 
     <section class="image-gallery">
-
-        <article class = "image-box"><img onclick="loadImg(this.src)" src="/imgs/meme-imgs (square)/1.jpg" alt=""></article>
-        <article class = "image-box"><img onclick="loadImg(this.src)" src="/imgs/meme-imgs (square)/2.jpg" alt=""></article>
-        <article class = "image-box"><img onclick="loadImg(this.src)" src="/imgs/meme-imgs (square)/3.jpg" alt=""></article>
-
-
-
 
     </section>
 
@@ -31,7 +35,8 @@
 
     <section class="meme-editor">
         <div class="canvas-container">
-            <canvas width="500px" height="500px"></canvas>
+            <canvas width="500" height="500"></canvas>
+            <input type="text" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
         </div>
     </section>
     <section class="saved-memes"></section>
@@ -41,6 +46,8 @@
 
     <script src="/js/main.js"></script>
     <script src="/js/meme-controller.js"></script>
+    <script src="/js/gallery-controller.js"></script>
+    <script src="/js/meme-service.js"></script>
 </body>
 
 </html>

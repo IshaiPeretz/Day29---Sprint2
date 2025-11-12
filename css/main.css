@@ -10,15 +10,14 @@
 .image-gallery {
     display: grid;
     grid-auto-flow: column;
-    
-    
-    gap: 5px;
+    gap: 10px;
     
 }
 
 
 .image-box{
-    width: 200px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 canvas {
@@ -29,3 +28,4 @@ canvas {
 img {
     width: 100%;
 }
+
