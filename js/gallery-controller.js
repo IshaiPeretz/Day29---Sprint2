@@ -6,7 +6,7 @@ function renderGallery() {
 
     const imgs = getImgs()
 
-    let stringHTML = imgs.map(img => `<article class = "image-box"><img onclick="onImgSelect(${img.id})" src="/imgs/meme-imgs (square)/${img.id}.jpg" alt=""></article>`)
+    let stringHTML = imgs.map(img => `<article class = "image-box"><img onclick="onImgSelect(${img.id})" src="imgs/meme-imgs (square)/${img.id}.jpg" alt=""></article>`)
 
     elGallery.innerHTML = stringHTML.join('')
 }
