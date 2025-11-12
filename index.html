@@ -14,7 +14,7 @@
         <div class="logo">Meme Generator</div>
         <nav class=nav-bar>
             <ul>
-                <li> <a href="#" onclick = "onShowGallery()"> Gallery </a></li>
+                <li> <a href="#" onclick="onShowGallery()"> Gallery </a></li>
                 <li><a href="#"> placeholder </a></li>
             </ul>
 
@@ -22,7 +22,7 @@
     </header>
 
 
-    <main >
+    <main>
         <section class="image-gallery">
 
         </section>
@@ -31,9 +31,16 @@
 
 
         <section class="meme-editor" hidden>
-            <div class="canvas-container" >
+            <div class="canvas-container">
                 <canvas width="500" height="500"></canvas>
-                <input type="text" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
+
+                <section class="meme-edit">
+                    <input type="color" name="brush-color" id="color" onchange="onSetColor(this.value)">
+                    <input type="text" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
+                    <button onclick="onChangeFontSize(2)">increase</button>
+                    <button onclick="onChangeFontSize(-2)">decrease</button>
+                    <a href="#" class="btn" onclick="onDownloadImage(this)" download="my-meme.jpg">Download Meme</a>
+                </section>
             </div>
         </section>
         <section class="saved-memes"></section>

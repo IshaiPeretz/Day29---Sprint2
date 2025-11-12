@@ -6,7 +6,7 @@ let gCtx
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-   
+
     renderGallery()
     renderMeme()
 
@@ -41,6 +41,22 @@ function onTextInput(text) {
     setLineText(text)
     renderMeme()
 
+}
+
+function onSetColor(color) {
+    setMemeTxtColor(color)
+    renderMeme()
+}
+
+function onChangeFontSize(val) {
+    setFontSize(val)
+    renderMeme()
+
+}
+
+function onDownloadImage(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
 }
 
 

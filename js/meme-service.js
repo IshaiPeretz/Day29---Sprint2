@@ -24,6 +24,7 @@ function getMeme() {
 }
 
 
+
 function getImgURL(id) {
     return gImgs.find(img => img.id === id)
 }
@@ -33,6 +34,16 @@ function setLineText(text) {
 
 }
 
+function setMemeTxtColor(color){
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+ 
+function setFontSize(val){
+     gMeme.lines[gMeme.selectedLineIdx].size += val
+
+}
+
 function setImg(id){
     gMeme.selectedImgId = id
 }
+
