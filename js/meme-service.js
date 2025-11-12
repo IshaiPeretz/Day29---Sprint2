@@ -1,10 +1,19 @@
 const gFirstLinePos = 50
 
 
+
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', keywords: ['funny', 'cat'] },
     { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', keywords: ['funny', 'cat'] },
+    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', keywords: ['funny', 'cat'] },
+    { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', keywords: ['funny', 'cat'] },
+    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', keywords: ['funny', 'cat'] },
+    { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', keywords: ['funny', 'cat'] },
+    { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', keywords: ['funny', 'cat'] },
+    { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', keywords: ['funny', 'cat'] },
+    { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', keywords: ['funny', 'cat'] },
+ 
 ]
 
 var gMeme = {
@@ -12,12 +21,12 @@ var gMeme = {
     selectedLineIdx: 0,
     lines:
         [{
-            txt: 'ABCasdasfasfasf',
+            txt: 'Enter Top Text here',
             size: 20,
             color: 'white',
             pos: 'top'
         }, {
-            txt: 'DEF',
+            txt: 'Enter Bottom Text here',
             size: 20,
             color: 'yellow',
             pos: 'bottom'
@@ -36,7 +45,7 @@ function getMeme() {
 
 function addLine() {
     const line = {
-        txt: 'GHI',
+        txt: 'Enter Extra Text here',
         size: 20,
         color: 'white',
         pos: 'center'

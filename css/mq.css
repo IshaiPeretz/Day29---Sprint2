@@ -1,0 +1,15 @@
+@media (min-width: 800px) {
+
+    .main-layout{
+        grid-template-columns: minmax(16px ,1fr) minmax(auto 1260px)  minmax(16px ,1fr);
+
+    }
+
+    .image-gallery {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+
+
+
+    }
+}

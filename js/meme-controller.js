@@ -1,7 +1,7 @@
 'use strict'
 let gElCanvas
 let gCtx
-
+let isUserTyping = false
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
@@ -45,16 +45,18 @@ function renderMeme() {
             
             gCtx.fillText(line.txt, x, y)
         })
+        if(!isUserTyping){
         const currLine = meme.lines[meme.selectedLineIdx]
         let textWidth = gCtx.measureText(currLine.txt).width
-        gCtx.fillStyle = ' rgba(0, 0, 0, 0.5)'
-        gCtx.fillRect(currLine.x-textWidth/2, currLine.y - currLine.size,textWidth , currLine.size+5)
-        
+        gCtx.fillStyle = ' rgba(0, 0, 0, 0.3)'
+        gCtx.fillRect(currLine.x-textWidth/2, currLine.y - currLine.size,textWidth , currLine.size+10)
+        }
 
     }
 }
 
 function onTextInput(text) {
+    isUserTyping = true
     setLineText(text)
     renderMeme()
 
@@ -78,6 +80,7 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
+    isUserTyping = false
     switchLine()
     renderMeme()
 }

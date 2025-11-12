@@ -7,16 +7,18 @@
     <title>Meme Generator</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/helpers.css">
+    <link rel="stylesheet" href="css/mq.css">
+    <link rel="stylesheet" href="css/typography.css">
 </head>
 
 <body class="main-layout" onload="onInit()">
 
-    <header class = "main-header flex align-items space-between">
+    <header class="main-header flex align-items space-between">
         <div class="logo">Meme Generator</div>
-        <nav class=nav-bar>
-            <ul class = "nav-list flex clean-list">
+        <nav class="nav-bar ">
+            <ul class="nav-list flex clean-list ">
                 <li> <a href="#" onclick="onShowGallery()"> Gallery </a></li>
-                <li><a href="#"> placeholder </a></li>
+
             </ul>
 
         </nav>
@@ -33,16 +35,20 @@
 
         <section class="meme-editor" hidden>
             <div class="canvas-container">
-                <canvas width="500" height="500"></canvas>
+                <canvas width="500" height="500" ></canvas>
 
                 <section class="meme-edit">
-                    <input type="color" name="brush-color" id="color" onchange="onSetColor(this.value)">
-                    <input type="text" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
-                    <button onclick="onChangeFontSize(2)">increase</button>
-                    <button onclick="onChangeFontSize(-2)">decrease</button>
-                    <button onclick="onAddLine()">Add Line</button>
-                    <button onclick="onSwitchLine()">Switch Line</button>
-                    <a href="#" class="btn" onclick="onDownloadImage(this)" download="my-meme.jpg">Download Meme</a>
+                    <input type="text" class = "text-box" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
+                    <section class="line-edit grid">
+                        <button class="btn" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn" onclick="onSwitchLine()"><i class="fa-solid fa-up-down"></i></button>
+                    </section>
+                    <section class="text-edit grid">
+                        <input class="btn" type="color" name="brush-color" id="color" onchange="onSetColor(this.value)">
+                        <button class="btn" onclick="onChangeFontSize(2)">A+</button>
+                        <button class="btn" onclick="onChangeFontSize(-2)">A-</button>
+                    </section>
+                    <a href="#" class="btn download grid align-items" onclick="onDownloadImage(this)" download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a>
                 </section>
             </div>
         </section>
@@ -50,6 +56,7 @@
 
 
     </main>
+    <script src="https://kit.fontawesome.com/1edd33dbfe.js" crossorigin="anonymous"></script>
 
     <script src="js/main.js"></script>
     <script src="js/meme-controller.js"></script>
