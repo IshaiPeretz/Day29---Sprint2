@@ -1,7 +1,5 @@
 const gFirstLinePos = 50
 
-
-
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', keywords: ['funny', 'cat'] },
@@ -34,12 +32,11 @@ var gMeme = {
         ]
 }
 
-
 function getImgs() {
     return gImgs
 }
-function getMeme() {
 
+function getMeme() {
     return gMeme
 }
 
@@ -57,7 +54,6 @@ function addLine() {
 function switchLine() {
     (gMeme.selectedLineIdx === gMeme.lines.length - 1) ? gMeme.selectedLineIdx = 0 : gMeme.selectedLineIdx++
 }
-
 
 function getImgURL(id) {
     return gImgs.find(img => img.id === id)
@@ -82,8 +78,6 @@ function setImg(id) {
 }
 
 function checkPosition(x, y) {
-
-
     const lines = gMeme.lines
     const idx = lines.findIndex(line => line.rect.x <= x && x <= line.rect.x + line.rect.width
         && line.rect.y <= y && y <= line.rect.y + line.rect.height
