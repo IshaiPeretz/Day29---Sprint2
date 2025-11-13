@@ -3,16 +3,16 @@
 
 
 var gImgs = [
-    { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', keywords: ['funny', 'cat'] },
-    { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', keywords: ['funny', 'cat'] },
-    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', keywords: ['funny', 'cat'] },
-    { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', keywords: ['funny', 'cat'] },
-    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', keywords: ['funny', 'cat'] },
-    { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', keywords: ['funny', 'cat'] },
-    { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', keywords: ['funny', 'cat'] },
-    { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', keywords: ['funny', 'cat'] },
-    { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', keywords: ['funny', 'cat'] },
+    { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['trump', 'funny', 'president'] },
+    { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', keywords: ['cute', 'dog', 'puppy'] },
+    { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', keywords: ['cute', 'dog', 'baby'] },
+    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', keywords: ['cat', 'funny'] },
+    { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', keywords: ['funny', 'baby'] },
+    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', keywords: ['funny', 'aliens'] },
+    { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', keywords: ['funny', 'baby'] },
+    { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', keywords: ['willy', 'funny'] },
+    { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', keywords: ['funny', 'baby', 'laugh'] },
+    { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', keywords: ['laugh', 'obama', 'president'] },
 
 ]
 
@@ -88,12 +88,12 @@ function setPosition(val) {
 }
 
 function setTextAlign(pos, x) {
-    const currLine =  gMeme.lines[gMeme.selectedLineIdx]
+    const currLine = gMeme.lines[gMeme.selectedLineIdx]
     currLine.x = x
-    currLine.txtPos = pos  
+    currLine.txtPos = pos
 }
 
-function setLineFont(val){
+function setLineFont(val) {
     gMeme.lines[gMeme.selectedLineIdx].font = val
 }
 
@@ -101,10 +101,10 @@ function setImg(id) {
     gMeme.selectedImgId = id
 }
 
-function deleteLine(){
-     gMeme.lines.splice(gMeme.selectedLineIdx,1)
-     console.log(gMeme);
-     
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    console.log(gMeme)
+
 }
 
 function checkPosition(x, y) {
@@ -117,3 +117,18 @@ function checkPosition(x, y) {
 
     }
 }
+
+
+function setFilter(filter) {
+    let images = gImgs.filter(img =>
+         img.keywords.some(word =>
+            word.toLowerCase().includes(filter.toLowerCase()))
+    )
+
+
+    console.log(images);
+    
+
+}
+
+
