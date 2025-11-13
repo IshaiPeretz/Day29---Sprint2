@@ -1,0 +1,20 @@
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 10px;
+    background-color: var(--clr-primary--1);
+    padding: var(--padding-main);
+    border-radius: var(--border-radius-1);
+}
+
+
+.image-box {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+img {
+    width: 100%;
+    border-radius: var(--border-radius-1);
+}

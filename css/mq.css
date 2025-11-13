@@ -1,15 +1,72 @@
-@media (min-width: 800px) {
+@media (min-width: 600px) {
 
-    .main-layout{
-        grid-template-columns: minmax(16px ,1fr) minmax(auto 1260px)  minmax(16px ,1fr);
+    .main-layout {
+
+        grid-template-columns: minmax(16px, 1fr) auto minmax(16px, 1fr);
+
+
+        >* {
+            grid-column: 2;
+        }
 
     }
 
     .image-gallery {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
-
-
+        grid-template-columns: repeat(3, 1fr);
 
     }
+
+    .meme-edit {
+        align-items: center;
+    }
+}
+
+
+
+
+
+
+@media (min-width:900px) {
+     .main-layout {
+        grid-template-columns: minmax(16px, 1fr) minmax(auto, 1260px) minmax(16px, 1fr);
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(5, 1fr);
+
+    }
+
+    .main-header {
+        height: 75px;
+    }
+
+
+    .meme-editor {
+        column-gap: 20px;
+        
+        
+    }
+
+    .canvas-container {
+        width: 500px;
+       
+    }
+
+    .meme-edit {
+        grid-column: 2;
+        max-width: 400px;
+    }
+
+
+    .main-header {
+        border-radius: 37px;
+
+        .logo {
+
+            font-size: 1.375em
+        }
+
+    }
+
+  
 }

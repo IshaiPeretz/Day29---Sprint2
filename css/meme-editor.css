@@ -1,0 +1,62 @@
+
+.canvas-container {
+    width: 100vw;
+    margin: auto;
+    text-align: center;
+    background-color: var(--clr-primary--1);
+    border-radius: var(--border-radius-1);
+    margin-bottom: 5px;
+}
+
+canvas {
+    border: 1px solid grey;
+
+}
+
+.meme-edit {
+    display: grid;
+    background-color: var(--clr-primary--1);
+    padding: var(--padding-main);
+    border-radius: var(--border-radius-1);
+}
+
+
+
+.text-box {
+    margin-bottom: 10px;
+    border-radius: var(--border-radius-1);
+    height: 40px;
+    min-width: 300px;
+    justify-self: center;
+}
+
+.line-edit {
+    justify-items: center;
+    margin-bottom: 10px;
+
+}
+
+.text-edit {
+    display: grid;
+    align-items: center;
+    padding: var(--padding-main);
+    margin-bottom: 10px;
+    justify-items: center;
+    background-image: linear-gradient(to right, #0f9bb4 0%, #30bb72 100%);
+    border-radius: var(--border-radius-1);
+    row-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-rows: 1fr 1fr;
+    
+ 
+}
+
+
+.download {
+    padding: 5px;
+    color: var(--clr-primary--2);
+    width: fit-content;
+    border: 1px solid var(--clr-primary--2);
+    border-radius: var(--border-radius-1);
+}
