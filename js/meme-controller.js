@@ -105,14 +105,17 @@ function onSwitchLine() {
 }
 
 function onDownloadImage(elLink) {
-    gIsUserTyping = true
-    renderMeme()
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
 
-
-
 }
+
+
+function addEmoji(elBtn) {
+    addLine(elBtn.innerText)
+    renderMeme()
+}
+
 
 
 function renderImg(img) {
@@ -129,7 +132,7 @@ function onClick(ev) {
     gElMemeInputText.focus()
     gIsUserTyping = false
     renderMeme()
-    
+
 }
 
 function onChangePosition(val) {

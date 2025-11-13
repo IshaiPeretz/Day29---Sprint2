@@ -18,7 +18,7 @@ canvas {
     display: grid;
     background-color: var(--clr-primary--1);
     padding: var(--padding-main);
-    border-radius: var(--border-radius-1);
+    border-radius: 3%
 }
 
 
@@ -35,7 +35,13 @@ canvas {
     justify-items: center;
     margin-bottom: 10px;
 
+    .btn{
+            background-color: var(--clr-primary--1);
+            color: var(--clr-primary--2);
+    }
 }
+
+
 
 .text-edit {
     display: grid;
@@ -65,5 +71,19 @@ canvas {
     &:hover {
         background-color: var(--clr-primary--2);
         color: var(--clr-primary--1);
+    }
+}
+
+.emoji-bar{
+    display: grid;
+    margin-bottom: 10px;
+    justify-items: center;
+   
+    
+    .btn{
+        background-color: var(--clr-primary--1);
+        border: 0px;
+        font-size: 1.5em;
+        
     }
 }

@@ -11,7 +11,7 @@
 <body class="main-layout" onload="onInit()">
 
     <header class="main-header flex align-items space-between">
-        <div class="logo">Meme Generator</div>
+        <div class="logo">Memer</div>
         <nav class="nav-bar ">
             <ul class="nav-list flex clean-list ">
                 <li> <a href="#" onclick="onShowGallery()"> Gallery </a></li>
@@ -56,14 +56,23 @@
                     </select>
                     <button class="btn" onclick="onSwitchLine()"><i class="fa-solid fa-up-down"></i></button>
                     <button class="btn" onclick="onReset()"><i class="fa-solid fa-trash-can"></i></button>
-
                 </section>
+
+                <section class = "emoji-bar grid">
+                    <button class = "btn" onclick = "addEmoji(this)">😎</button>
+                    <button class = "btn" onclick = "addEmoji(this)">🤣</button>
+                    <button class = "btn" onclick = "addEmoji(this)">😴</button>
+                    <button class = "btn" onclick = "addEmoji(this)">🤩</button>
+                    <button class = "btn" onclick = "addEmoji(this)">😊</button>
+                </section>
+
+
                 <section class="text-edit grid">
-                    <input class="btn" type="color" name="brush-color" id="color" onchange="onSetColor(this.value)">
+                    <input class="btn" type="color" name="brush-color" id="color" oninput="onSetColor(this.value)">
                     <button class="btn" onclick="onChangeFontSize(2)">A+</button>
                     <button class="btn" onclick="onChangeFontSize(-2)">A-</button>
-                    <button class="btn" onclick="onChangePosition(-2)">↑</button>
-                    <button class="btn" onclick="onChangePosition(2)">↓</button>
+                    <button class="btn" onclick="onChangePosition(-2)"><i class="fa-solid fa-arrow-up"></i></button>
+                    <button class="btn" onclick="onChangePosition(2)"><i class="fa-solid fa-arrow-down"></i></button>
                     <button class="btn" onclick="onSetAlignment('left',50)"><i
                             class="fa-solid fa-align-left"></i></button>
                     <button class="btn" onclick="onSetAlignment('center',250)"><i

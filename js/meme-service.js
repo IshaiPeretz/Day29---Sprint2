@@ -14,6 +14,14 @@ var gImgs = [
     { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', keywords: ['willy', 'funny'] },
     { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', keywords: ['funny', 'baby', 'laugh'] },
     { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', keywords: ['laugh', 'obama', 'president'] },
+    { id: 11, url: 'imgs/meme-imgs (square)/11.jpg', keywords: ['basketball', 'kiss'] },
+    { id: 12, url: 'imgs/meme-imgs (square)/12.jpg', keywords: ['you', 'sunshine'] },
+    { id: 13, url: 'imgs/meme-imgs (square)/13.jpg', keywords: ['leonardo', 'dicaprio', 'cheers'] },
+    { id: 14, url: 'imgs/meme-imgs (square)/14.jpg', keywords: ['matrix', 'morpheus', 'what if'] },
+    { id: 15, url: 'imgs/meme-imgs (square)/15.jpg', keywords: ['one does not', 'lord of the rings'] },
+    { id: 16, url: 'imgs/meme-imgs (square)/16.jpg', keywords: ['picard', 'facepalm'] },
+    { id: 17, url: 'imgs/meme-imgs (square)/17.jpg', keywords: ['president', 'putin'] },
+    { id: 18, url: 'imgs/meme-imgs (square)/18.jpg', keywords: ['toy story', 'woody', 'buzz'] },
 
 ]
 
@@ -80,15 +88,26 @@ function getMeme() {
 }
 
 
+function getNextLinePos() {
+    const lines = gMeme.lines
+    if (lines.length === 0) return { x: 50, y: 50 }
+    else if (lines.length === 1) return { x: 50, y: 450 }
+    else if (lines.length === 2) return { x: 50, y: 250 }
+    const lastLine = lines[lines.length - 1]
+    const diffX = 10
+    const diffY = 10
+    return { x: lastLine.x + diffX, y: lastLine.y + diffY }
+}
 
 
-function addLine() {
+function addLine(txt = 'Enter Text here') {
+    const position = getNextLinePos()
     const line = {
-        txt: 'Enter Extra Text here',
+        txt: txt,
         size: 20,
         color: 'white',
-        y: 250,
-        x: 50,
+        y: position.y,
+        x: position.x,
         txtPos: 'left',
         font: 'Arial'
     }
