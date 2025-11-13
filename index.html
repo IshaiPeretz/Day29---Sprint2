@@ -35,13 +35,22 @@
 
         <section class="meme-editor" hidden>
             <div class="canvas-container">
-                <canvas width="500" height="500" onclick = "onClick(event)"></canvas>
+                <canvas width="500" height="500" onclick="onClick(event)"></canvas>
 
                 <section class="meme-edit">
-                    <input type="text" class = "text-box" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
+                    <input type="text" class="text-box" placeholder="Enter-meme-text" oninput="onTextInput(this.value)">
                     <section class="line-edit grid">
                         <button class="btn" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                        <button class="btn" onclick="onDeleteLine()"><i class="fa-solid fa-trash-can"></i></button>
+                        <select name="font-selector" id="" onchange="onSetFont(this.value)">
+                            <option value="Arial" selected>Arial</option>
+                            <option value="Poppins">Poppins</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
                         <button class="btn" onclick="onSwitchLine()"><i class="fa-solid fa-up-down"></i></button>
+
                     </section>
                     <section class="text-edit grid">
                         <input class="btn" type="color" name="brush-color" id="color" onchange="onSetColor(this.value)">
@@ -49,12 +58,16 @@
                         <button class="btn" onclick="onChangeFontSize(-2)">A-</button>
                         <button class="btn" onclick="onChangePosition(-2)">↑</button>
                         <button class="btn" onclick="onChangePosition(2)">↓</button>
-                        <button class="btn" onclick="onSetAlignment('left',50)">left</button>
-                        <button class="btn" onclick="onSetAlignment('right',450)">right</button>
-                        <button class="btn" onclick="onSetAlignment('center',250)">center</button>
-                        
+                        <button class="btn" onclick="onSetAlignment('left',50)"><i
+                                class="fa-solid fa-align-left"></i></button>
+                        <button class="btn" onclick="onSetAlignment('center',250)"><i
+                                class="fa-solid fa-align-center"></i></button>
+                        <button class="btn" onclick="onSetAlignment('right',450)"><i
+                                class="fa-solid fa-align-right"></i></button>
+
                     </section>
-                    <a href="#" class="btn download grid align-items" onclick="onDownloadImage(this)" download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a>
+                    <a href="#" class="btn download grid align-items" onclick="onDownloadImage(this)"
+                        download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a>
                 </section>
             </div>
         </section>

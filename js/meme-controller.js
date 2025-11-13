@@ -30,7 +30,7 @@ function renderMeme() {
         renderImg(img)
 
         meme.lines.forEach(line => {
-            gCtx.font = `${line.size}px Arial`
+            gCtx.font = `${line.size}px ${line.font}`
             gCtx.fillStyle = line.color
             gCtx.textAlign = line.txtPos
             const textWidth = gCtx.measureText(line.txt).width
@@ -39,8 +39,8 @@ function renderMeme() {
 
             let x = line.x
             if (line.txtPos === 'right') x = line.x - textWidth
-            else if (line.txtPos === 'center') x = line.x - textWidth/2
-           
+            else if (line.txtPos === 'center') x = line.x - textWidth / 2
+
 
 
             line.rect = {
@@ -81,10 +81,15 @@ function onChangeFontSize(val) {
 
 }
 
-
 function onAddLine() {
     addLine()
     renderMeme()
+}
+
+function onSetFont(val) {
+    setLineFont(val)
+    renderMeme()
+
 }
 
 function onSwitchLine() {
@@ -119,9 +124,14 @@ function onChangePosition(val) {
 
 }
 
-function onSetAlignment(pos,x) {
-    setTextAlign(pos,x)
+function onSetAlignment(pos, x) {
+    setTextAlign(pos, x)
     renderMeme()
 
+}
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
 }
 

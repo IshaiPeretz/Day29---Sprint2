@@ -26,14 +26,16 @@ var gMeme = {
             color: 'white',
             y: 50,
             x: 50,
-            txtPos: 'left'
+            txtPos: 'left',
+            font: 'Arial'
         }, {
             txt: 'Enter Bottom Text here',
             size: 20,
             color: 'yellow',
             y: 450,
             x: 250,
-            txtPos: 'left'
+            txtPos: 'left',
+            font: 'Arial'
         }
         ]
 }
@@ -53,7 +55,8 @@ function addLine() {
         color: 'white',
         y: 250,
         x: 50,
-        txtPos: 'left'
+        txtPos: 'left',
+        font: 'Arial'
     }
     gMeme.lines.push(line)
 }
@@ -87,13 +90,21 @@ function setPosition(val) {
 function setTextAlign(pos, x) {
     const currLine =  gMeme.lines[gMeme.selectedLineIdx]
     currLine.x = x
-    currLine.txtPos = pos
-   
-    
+    currLine.txtPos = pos  
+}
+
+function setLineFont(val){
+    gMeme.lines[gMeme.selectedLineIdx].font = val
 }
 
 function setImg(id) {
     gMeme.selectedImgId = id
+}
+
+function deleteLine(){
+     gMeme.lines.splice(gMeme.selectedLineIdx,1)
+     console.log(gMeme);
+     
 }
 
 function checkPosition(x, y) {
