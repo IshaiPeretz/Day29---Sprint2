@@ -29,4 +29,5 @@ function onShowGallery() {
 
 function onSearchBy(filter){
     setFilter(filter)
+    renderGallery()
 }

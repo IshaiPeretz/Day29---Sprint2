@@ -1,5 +1,6 @@
+'use strict'
 
-
+let gFilteredImgs = []
 
 
 var gImgs = [
@@ -41,7 +42,8 @@ var gMeme = {
 }
 
 function getImgs() {
-    return gImgs
+    if (!gFilteredImgs || !gFilteredImgs.length) return gImgs
+    return gFilteredImgs
 }
 
 function getMeme() {
@@ -121,13 +123,13 @@ function checkPosition(x, y) {
 
 function setFilter(filter) {
     let images = gImgs.filter(img =>
-         img.keywords.some(word =>
+        img.keywords.some(word =>
             word.toLowerCase().includes(filter.toLowerCase()))
     )
 
+    gFilteredImgs = images
+   
 
-    console.log(images);
-    
 
 }
 
