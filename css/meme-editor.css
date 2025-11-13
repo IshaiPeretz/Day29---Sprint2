@@ -1,15 +1,16 @@
-
 .canvas-container {
     width: 100vw;
     margin: auto;
+    max-height: 500px;
     text-align: center;
     background-color: var(--clr-primary--1);
     border-radius: var(--border-radius-1);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 canvas {
-    border: 1px solid grey;
+   
+   border-radius: 3%;
 
 }
 
@@ -48,15 +49,21 @@ canvas {
     grid-template-columns: repeat(4, 1fr);
 
     grid-template-rows: 1fr 1fr;
-    
- 
+
+
 }
 
 
-.download {
+.link {
     padding: 5px;
     color: var(--clr-primary--2);
     width: fit-content;
     border: 1px solid var(--clr-primary--2);
     border-radius: var(--border-radius-1);
+    background-color: var(--clr-primary--1);
+
+    &:hover {
+        background-color: var(--clr-primary--2);
+        color: var(--clr-primary--1);
+    }
 }

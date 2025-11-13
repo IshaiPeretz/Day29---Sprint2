@@ -14,11 +14,14 @@ html {
     --clr-primary--2: #26b286;
     /* Header */
     --border-radius-1: 5px;
-    --padding-main: 20px
+    --padding-main: 1.25em
 }
 
 
 
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 

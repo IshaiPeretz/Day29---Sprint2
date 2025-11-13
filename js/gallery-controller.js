@@ -14,6 +14,7 @@ function renderGallery() {
 function onImgSelect(id) {
     gElEditor.style.display = 'grid'
     gElGallery.style.display = 'none'
+    gElSearchBar.style.display = 'none'
 
     setImg(id)
     renderMeme()
@@ -23,11 +24,37 @@ function onImgSelect(id) {
 function onShowGallery() {
     gElEditor.style.display = 'none'
     gElGallery.style.display = 'grid'
+    gElSearchBar.style.display = 'grid'
 
 
 }
 
-function onSearchBy(filter){
+function onSearchBy(filter) {
     setFilter(filter)
     renderGallery()
 }
+
+
+
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderImg)
+    gElEditor.style.display = 'grid'
+    gElGallery.style.display = 'none'
+    gElSearchBar.style.display = 'none'
+
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+
+    reader.onload = function (event) {
+        const img = new Image()
+        img.onload = () => {
+            onImageReady(img)
+        }
+        img.src = event.target.result
+    }
+    reader.readAsDataURL(ev.target.files[0])
+}
+

@@ -1,5 +1,5 @@
 'use strict'
-
+const STORAGE_KEY = 'memesDB'
 let gFilteredImgs = []
 
 
@@ -22,23 +22,52 @@ var gMeme = {
     selectedLineIdx: 0,
     lines:
         [{
-            txt: 'Enter Top Text here',
+            txt: 'Enter Text here',
             size: 20,
             color: 'white',
             y: 50,
             x: 50,
             txtPos: 'left',
-            font: 'Arial'
+            font: 'Arial',
+            idx: 0
+
         }, {
-            txt: 'Enter Bottom Text here',
+            txt: 'Enter Text here',
             size: 20,
-            color: 'yellow',
+            color: 'white',
             y: 450,
             x: 250,
             txtPos: 'left',
-            font: 'Arial'
+            font: 'Arial',
+            idx: 1
         }
         ]
+}
+
+function resetMemeEdit() {
+    gMeme.lines = [
+        {
+            txt: 'Enter Text here',
+            size: 20,
+            color: 'white',
+            y: 50,
+            x: 50,
+            txtPos: 'left',
+            font: 'Arial',
+            idx: 0
+        },
+        {
+            txt: 'Enter Text here',
+            size: 20,
+            color: 'white',
+            y: 450,
+            x: 250,
+            txtPos: 'left',
+            font: 'Arial',
+            idx: 1
+        }
+    ]
+    gMeme.selectedLineIdx = 0
 }
 
 function getImgs() {
@@ -50,6 +79,9 @@ function getMeme() {
     return gMeme
 }
 
+
+
+
 function addLine() {
     const line = {
         txt: 'Enter Extra Text here',
@@ -60,7 +92,10 @@ function addLine() {
         txtPos: 'left',
         font: 'Arial'
     }
+
+
     gMeme.lines.push(line)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 
@@ -128,9 +163,6 @@ function setFilter(filter) {
     )
 
     gFilteredImgs = images
-   
-
-
 }
 
 

@@ -1,8 +1,8 @@
 'use strict'
 let gElCanvas
 let gCtx
-let isUserTyping = false
-let moveLineVertBy = 0
+let gIsUserTyping = false
+
 
 function onInit() {
     gElCanvas = document.querySelector('canvas')
@@ -51,9 +51,10 @@ function renderMeme() {
             }
 
             gCtx.fillText(line.txt, line.x, line.y)
+
         })
 
-        if (!isUserTyping) {
+        if (!gIsUserTyping) {
             const currLine = meme.lines[meme.selectedLineIdx]
             gCtx.fillStyle = ' rgba(0, 0, 0, 0.3)'
             const rect = currLine.rect
@@ -64,7 +65,7 @@ function renderMeme() {
 }
 
 function onTextInput(text) {
-    isUserTyping = true
+    gIsUserTyping = true
     setLineText(text)
     renderMeme()
 
@@ -73,34 +74,44 @@ function onTextInput(text) {
 function onSetColor(color) {
     setMemeTxtColor(color)
     renderMeme()
+    gElMemeInputText.focus()
 }
 
 function onChangeFontSize(val) {
     setFontSize(val)
     renderMeme()
+    gElMemeInputText.focus()
 
 }
 
 function onAddLine() {
     addLine()
     renderMeme()
+    gElMemeInputText.focus()
 }
 
 function onSetFont(val) {
     setLineFont(val)
     renderMeme()
+    gElMemeInputText.focus()
 
 }
 
 function onSwitchLine() {
-    isUserTyping = false
+    gIsUserTyping = false
+    gElMemeInputText.focus()
     switchLine()
     renderMeme()
 }
 
 function onDownloadImage(elLink) {
+    gIsUserTyping = true
+    renderMeme()
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
+
+
+
 }
 
 
@@ -115,7 +126,10 @@ function onClick(ev) {
     console.log(offsetX, offsetY)
 
     checkPosition(offsetX, offsetY)
+    gElMemeInputText.focus()
+    gIsUserTyping = false
     renderMeme()
+    
 }
 
 function onChangePosition(val) {
@@ -130,9 +144,53 @@ function onSetAlignment(pos, x) {
 
 }
 
-function onDeleteLine() {
-    deleteLine()
+function onReset() {
+    resetMemeEdit()
+    gElMemeInputText.value = ''
+    gElFontSelector.value = 'Arial'
+    gElTextColor.value = '#000000'
     renderMeme()
 }
 
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+    gElMemeInputText.focus()
+}
+
+
+function onShareImg(ev) {
+    ev.preventDefault()
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+
+
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        console.log('encodedUploadedImgUrl:', encodedUploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+
+    }
+    uploadImg(canvasData, onSuccess)
+}
+
+
+async function uploadImg(imgData, onSuccess) {
+    const CLOUD_NAME = 'webify'
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
+    const formData = new FormData()
+    formData.append('file', imgData)
+    formData.append('upload_preset', 'webify')
+    try {
+        const res = await fetch(UPLOAD_URL, {
+            method: 'POST',
+            body: formData
+        })
+        const data = await res.json()
+        console.log('Cloudinary response:', data)
+        onSuccess(data.secure_url)
+
+    } catch (err) {
+        console.log(err)
+    }
+}
 

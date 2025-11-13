@@ -9,18 +9,31 @@
     border-radius: var(--border-radius-1);
 }
 
-a {
-    text-decoration: none;
-}
+
 
 .nav-list {
     gap: 20px;
+    li{
+    color: white;
 
+       
+    }
+
+    label:hover {
+      cursor: pointer;
+    }
 }
+
 
 .logo {
-    font-size: 2.75em;
+    font-size: 2.5em;
     color: white;
 }
+
+.file-input{
+    display: none;
+
+}
+
 
 

@@ -18,3 +18,17 @@ img {
     width: 100%;
     border-radius: var(--border-radius-1);
 }
+
+.search-bar{
+    display: grid;
+
+    input {
+        height: 3em;
+        background-color: var(--clr-primary--1);
+        color: #fff;
+        padding: var(--padding-main);
+        margin-bottom: 10px;
+        border-radius: 37px;
+        border: 1px solid var(--clr-primary--2);
+    }
+}
