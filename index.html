@@ -47,6 +47,12 @@
                         <input class="btn" type="color" name="brush-color" id="color" onchange="onSetColor(this.value)">
                         <button class="btn" onclick="onChangeFontSize(2)">A+</button>
                         <button class="btn" onclick="onChangeFontSize(-2)">A-</button>
+                        <button class="btn" onclick="onChangePosition(-2)">↑</button>
+                        <button class="btn" onclick="onChangePosition(2)">↓</button>
+                        <button class="btn" onclick="onSetAlignment('left',50)">left</button>
+                        <button class="btn" onclick="onSetAlignment('right',450)">right</button>
+                        <button class="btn" onclick="onSetAlignment('center',250)">center</button>
+                        
                     </section>
                     <a href="#" class="btn download grid align-items" onclick="onDownloadImage(this)" download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a>
                 </section>

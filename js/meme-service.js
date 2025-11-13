@@ -1,4 +1,6 @@
-const gFirstLinePos = 50
+
+
+
 
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['funny', 'cat'] },
@@ -22,12 +24,16 @@ var gMeme = {
             txt: 'Enter Top Text here',
             size: 20,
             color: 'white',
-            pos: 'top'
+            y: 50,
+            x: 50,
+            txtPos: 'left'
         }, {
             txt: 'Enter Bottom Text here',
             size: 20,
             color: 'yellow',
-            pos: 'bottom'
+            y: 450,
+            x: 250,
+            txtPos: 'left'
         }
         ]
 }
@@ -45,7 +51,9 @@ function addLine() {
         txt: 'Enter Extra Text here',
         size: 20,
         color: 'white',
-        pos: 'center'
+        y: 250,
+        x: 50,
+        txtPos: 'left'
     }
     gMeme.lines.push(line)
 }
@@ -70,7 +78,18 @@ function setMemeTxtColor(color) {
 
 function setFontSize(val) {
     gMeme.lines[gMeme.selectedLineIdx].size += val
+}
 
+function setPosition(val) {
+    gMeme.lines[gMeme.selectedLineIdx].y += val
+}
+
+function setTextAlign(pos, x) {
+    const currLine =  gMeme.lines[gMeme.selectedLineIdx]
+    currLine.x = x
+    currLine.txtPos = pos
+   
+    
 }
 
 function setImg(id) {
@@ -84,6 +103,6 @@ function checkPosition(x, y) {
     )
     if (idx !== -1) {
         gMeme.selectedLineIdx = idx
-        renderMeme()
+
     }
 }
