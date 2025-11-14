@@ -7,12 +7,9 @@ let gIsUserTyping = false
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-    
     renderGallery()
     renderMeme()
-
-
-
+    addLine()
 
 }
 
@@ -54,8 +51,8 @@ function renderMeme() {
 
         })
 
-        if (!gIsUserTyping) {
-            const currLine = meme.lines[meme.selectedLineIdx]
+        const currLine = meme.lines[meme.selectedLineIdx]
+        if (!gIsUserTyping && currLine) {
             gCtx.fillStyle = ' rgba(0, 0, 0, 0.3)'
             const rect = currLine.rect
             gCtx.fillRect(rect.x, rect.y, rect.width, rect.height)
@@ -90,8 +87,7 @@ function onAddLine() {
     gElMemeInputText.focus()
 }
 
-function onSetFont(val,elSelect) {
-    console.log(elSelect);
+function onSetFont(val, elSelect) {
     elSelect.style.fontFamily = val
     setLineFont(val)
     renderMeme()
@@ -129,13 +125,19 @@ function renderImg(img) {
 function onClick(ev) {
     const { offsetX, offsetY } = ev
     console.log(offsetX, offsetY)
+    const scaleX = gElCanvas.width / gElContainer.offsetWidth
+    const scaleY = gElCanvas.width / gElContainer.offsetHeight
 
-    checkPosition(offsetX, offsetY)
+    const actualX = offsetX * scaleX
+    const actualY = offsetY * scaleY
+
+    checkPosition(actualX, actualY)
     gElMemeInputText.focus()
     gIsUserTyping = false
     renderMeme()
 
 }
+
 
 function onChangePosition(val) {
     setPosition(val)
@@ -143,8 +145,8 @@ function onChangePosition(val) {
 
 }
 
-function onSetAlignment(pos, x) {
-    setTextAlign(pos, x)
+function onSetAlignment(pos) {
+    setTextAlign(pos)
     renderMeme()
 
 }
@@ -201,10 +203,6 @@ async function uploadImg(imgData, onSuccess) {
 
 
 function resizeCanvas() {
-    console.log(gElContainer.offsetWidth);
-    console.log(gElContainer.offsetHeight);
-    
-
     gElCanvas.width = gElContainer.offsetWidth
     gElCanvas.height = gElContainer.offsetHeight
 }

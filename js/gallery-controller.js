@@ -16,7 +16,7 @@ function onImgSelect(id) {
     gElGallery.style.display = 'none'
     gElSearchBar.style.display = 'none'
     resizeCanvas()
-
+    
     setImg(id)
     renderMeme()
 }

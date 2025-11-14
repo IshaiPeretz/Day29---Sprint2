@@ -8,11 +8,11 @@
 }
 
 canvas {
-   border-radius: 3%;
-   width: 100%;
-   
-   padding: 10px;
-   
+    border-radius: 3%;
+    width: 100%;
+
+    padding: 10px;
+
 
 }
 
@@ -32,18 +32,18 @@ canvas {
     height: 40px;
     min-width: 300px;
     justify-self: center;
-    font-family: poppins;
+    font-family: poppins, sans-serif;
     font-weight: bold;
-   
+
 }
 
 .line-edit {
     justify-items: center;
     margin-bottom: 10px;
 
-    .btn{
-            background-color: var(--clr-primary--1);
-            color: var(--clr-primary--2);
+    .btn {
+        background-color: var(--clr-primary--1);
+        color: var(--clr-primary--2);
     }
 }
 
@@ -80,22 +80,22 @@ canvas {
     }
 }
 
-.emoji-bar{
+.emoji-bar {
     display: grid;
     margin-bottom: 10px;
     justify-items: center;
-   
-    
-    .btn{
+
+
+    .btn {
         background-color: var(--clr-primary--1);
         border: 0px;
         font-size: 1.5em;
-        
+
     }
 }
 
 
-[name ='font-selector']{
-   width: 150px;
-    
+[name='font-selector'] {
+    width: 150px;
+
 }

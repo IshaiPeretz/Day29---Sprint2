@@ -29,28 +29,28 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines:
-        [{
-            txt: 'Enter Text here',
-            size: 20,
-            color: 'white',
-            y: 50,
-            x: 50,
-            txtPos: 'left',
-            font: 'Arial',
-            idx: 0
-
-        }, {
-            txt: 'Enter Text here',
-            size: 20,
-            color: 'white',
-            y: 450,
-            x: 250,
-            txtPos: 'left',
-            font: 'Arial',
-            idx: 1
-        }
+        [
         ]
 }
+
+// var gMeme = {
+//     selectedImgId: 1,
+//     selectedLineIdx: 0,
+//     lines:
+//         [{
+//             txt: 'Enter Text here',
+//             size: 20,
+//             color: 'white',
+//             y: 50,
+//             x: 50,
+//             txtPos: 'left',
+//             font: 'Arial',
+//             idx: 0
+
+//         }
+//         ]
+// }
+
 
 function resetMemeEdit() {
     gMeme.lines = [
@@ -58,21 +58,11 @@ function resetMemeEdit() {
             txt: 'Enter Text here',
             size: 20,
             color: 'white',
-            y: 50,
-            x: 50,
+            y: gElCanvas.width*0.1,
+            x: gElCanvas.height*0.1,
             txtPos: 'left',
             font: 'Arial',
             idx: 0
-        },
-        {
-            txt: 'Enter Text here',
-            size: 20,
-            color: 'white',
-            y: 450,
-            x: 250,
-            txtPos: 'left',
-            font: 'Arial',
-            idx: 1
         }
     ]
     gMeme.selectedLineIdx = 0
@@ -90,9 +80,9 @@ function getMeme() {
 
 function getNextLinePos() {
     const lines = gMeme.lines
-    if (lines.length === 0) return { x: 50, y: 50 }
-    else if (lines.length === 1) return { x: 50, y: 450 }
-    else if (lines.length === 2) return { x: 50, y: 250 }
+    if (lines.length === 0) return { x: gElCanvas.width*0.1, y: gElCanvas.height*0.1 }
+    else if (lines.length === 1) return { x:gElCanvas.width*0.1, y: gElCanvas.height*0.9}
+    else if (lines.length === 2) return { x: gElCanvas.width*0.1, y:gElCanvas.height*0.5 }
     const lastLine = lines[lines.length - 1]
     const diffX = 10
     const diffY = 10
@@ -143,9 +133,13 @@ function setPosition(val) {
     gMeme.lines[gMeme.selectedLineIdx].y += val
 }
 
-function setTextAlign(pos, x) {
+function setTextAlign(pos) {
     const currLine = gMeme.lines[gMeme.selectedLineIdx]
-    currLine.x = x
+
+    if (pos === 'left')  currLine.x = gElCanvas.width*0.1
+    else if (pos === 'center')  currLine.x = gElCanvas.width*0.5
+    else if (pos === 'right')  currLine.x = gElCanvas.width*0.9
+  
     currLine.txtPos = pos
 }
 
