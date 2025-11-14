@@ -52,6 +52,8 @@
                     ontouchstart="onDown(event)" onmouseup="onUp()" ontouchend="onUp()" onmousemove="onMove(event)"
                     ontouchmove="onMove(event)">
                 </canvas>
+
+                <canvas width = "500" height = "500"class="download-canvas" hidden></canvas>
             </div>
 
             <section class="meme-edit">
@@ -95,8 +97,9 @@
                 </section>
 
                 <section class="links flex space-between">
-                    <a href="#" class="btn link grid align-items" onclick="onDownloadImage(this)"
-                        download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a>
+                    <button class="btn link grid align-items" onclick="onDownloadImage()">Download<i class="fa-solid fa-download"></i></button>
+                    <!-- <a href="#" class="btn link grid align-items" onclick="onDownloadImage(this)"
+                        download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a> -->
 
                     <form method="POST" enctype="multipart/form-data" onsubmit="onShareImg(event)">
                         <button class="btn link" type="submit">Share <i

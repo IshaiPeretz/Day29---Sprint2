@@ -61,8 +61,10 @@ function renderMeme() {
 
         }
     }
-  
+
 }
+
+
 
 function onTextInput(text) {
     gIsUserTyping = true
@@ -105,10 +107,32 @@ function onSwitchLine() {
     renderMeme()
 }
 
-function onDownloadImage(elLink) {
-    const dataUrl = gElCanvas.toDataURL()
-    elLink.href = dataUrl
+function onDownloadImage() {
 
+    const meme = getMeme()
+    const imgURL = getImgURL(meme.selectedImgId)
+
+    const img = new Image()
+    img.src = imgURL.url
+    img.onload = () => {
+
+        gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
+        meme.lines.forEach(line => {
+            gCtx.font = `${line.size}px ${line.font}`
+            gCtx.fillStyle = line.color
+            gCtx.textAlign = line.txtPos
+            gCtx.fillText(line.txt, line.x, line.y)
+        })
+
+        const dataUrl = gElCanvas.toDataURL()
+        const elLink = document.createElement('a')
+        elLink.href = dataUrl
+        elLink.download = 'my-meme.jpg'
+        elLink.click()
+
+    }
 }
 
 
@@ -213,7 +237,7 @@ function resizeCanvas() {
 
 function onDown(ev) {
     const pos = getEvPos(ev)
-    
+
     const x = pos.x
     const y = pos.y
 
@@ -230,22 +254,22 @@ function onDown(ev) {
 function onMove(ev) {
     const { isDrag } = getMemeLine()
     if (!isDrag) return
-   
+
 
     const pos = getEvPos(ev)
-    
-   
+
+
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
     moveLine(dx, dy)
-   
+
     gStartPos = pos
-    
+
     renderMeme()
 }
 
 function onUp() {
-  
+
     setLineDrag(false)
     document.body.style.cursor = 'default'
 }
@@ -262,11 +286,11 @@ function getEvPos(ev) {
     }
 
     if (TOUCH_EVS.includes(ev.type)) {
-      
+
         ev.preventDefault()
-        
+
         ev = ev.changedTouches[0]
-        
+
         pos = {
             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
