@@ -151,6 +151,7 @@ function setTextAlign(pos, x) {
 
 function setLineFont(val) {
     gMeme.lines[gMeme.selectedLineIdx].font = val
+    
 }
 
 function setImg(id) {

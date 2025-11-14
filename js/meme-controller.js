@@ -7,7 +7,7 @@ let gIsUserTyping = false
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
-
+    
     renderGallery()
     renderMeme()
 
@@ -90,7 +90,9 @@ function onAddLine() {
     gElMemeInputText.focus()
 }
 
-function onSetFont(val) {
+function onSetFont(val,elSelect) {
+    console.log(elSelect);
+    elSelect.style.fontFamily = val
     setLineFont(val)
     renderMeme()
     gElMemeInputText.focus()
@@ -195,5 +197,15 @@ async function uploadImg(imgData, onSuccess) {
     } catch (err) {
         console.log(err)
     }
+}
+
+
+function resizeCanvas() {
+    console.log(gElContainer.offsetWidth);
+    console.log(gElContainer.offsetHeight);
+    
+
+    gElCanvas.width = gElContainer.offsetWidth
+    gElCanvas.height = gElContainer.offsetHeight
 }
 

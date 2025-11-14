@@ -52,14 +52,14 @@
             </div>
 
             <section class="meme-edit">
-                <input type="text" class="text-box" placeholder="Enter-meme-text" name="meme-text"
+                <input type="text" class="text-box" placeholder="Enter meme text" name="meme-text"
                     oninput="onTextInput(this.value)">
                 <section class="line-edit grid">
                     <button class="btn" onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
                     <button class="btn" onclick="onDeleteLine()"><i class="fa-solid fa-delete-left"></i></button>
-                    <select name="font-selector" id="" onchange="onSetFont(this.value)">
+                    <select name="font-selector" id="" onchange="onSetFont(this.value,this)">
                         <option value="Arial" selected>Arial</option>
-                        <option value="Poppins">Poppins</option>
+                        <option value="Poppins" >Poppins</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Impact">Impact</option>
                         <option value="Verdana">Verdana</option>

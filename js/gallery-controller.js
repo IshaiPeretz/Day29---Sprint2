@@ -15,6 +15,7 @@ function onImgSelect(id) {
     gElEditor.style.display = 'grid'
     gElGallery.style.display = 'none'
     gElSearchBar.style.display = 'none'
+    resizeCanvas()
 
     setImg(id)
     renderMeme()
