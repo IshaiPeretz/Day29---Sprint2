@@ -2,6 +2,7 @@
 let gElCanvas
 let gCtx
 let gIsUserTyping = false
+let gStartPos
 
 
 function onInit() {
@@ -26,6 +27,7 @@ function renderMeme() {
 
         renderImg(img)
 
+
         meme.lines.forEach(line => {
             gCtx.font = `${line.size}px ${line.font}`
             gCtx.fillStyle = line.color
@@ -34,21 +36,21 @@ function renderMeme() {
             line.textWidth = textWidth
 
 
-            let x = line.x -5
-            if (line.txtPos === 'right') x = line.x - textWidth
-            else if (line.txtPos === 'center') x = line.x - textWidth / 2
+            let x = line.x - 5
+            if (line.txtPos === 'right') x = line.x - 5 - textWidth
+            else if (line.txtPos === 'center') x = line.x - 5 - textWidth / 2
 
 
 
             line.rect = {
                 x: x,
-                y: line.y - line.size -5 ,
-                width: textWidth +10,
+                y: line.y - line.size - 5,
+                width: textWidth + 10,
                 height: line.size + 15
             }
 
             gCtx.fillText(line.txt, line.x, line.y)
-            
+
         })
 
         const currLine = meme.lines[meme.selectedLineIdx]
@@ -59,6 +61,7 @@ function renderMeme() {
 
         }
     }
+  
 }
 
 function onTextInput(text) {
@@ -124,7 +127,7 @@ function renderImg(img) {
 
 function onClick(ev) {
     const { offsetX, offsetY } = ev
-    console.log(offsetX, offsetY)
+    // console.log(offsetX, offsetY)
     const scaleX = gElCanvas.width / gElContainer.offsetWidth
     const scaleY = gElCanvas.height / gElContainer.offsetHeight
 
@@ -205,5 +208,70 @@ async function uploadImg(imgData, onSuccess) {
 function resizeCanvas() {
     gElCanvas.width = gElContainer.offsetWidth
     gElCanvas.height = gElContainer.offsetHeight
+}
+
+
+function onDown(ev) {
+    const pos = getEvPos(ev)
+    
+    const x = pos.x
+    const y = pos.y
+
+    if (!checkPosition(x, y)) return
+
+    setLineDrag(true)
+
+    gStartPos = { x, y }
+    document.body.style.cursor = 'grabbing'
+}
+
+
+
+function onMove(ev) {
+    const { isDrag } = getMemeLine()
+    if (!isDrag) return
+   
+
+    const pos = getEvPos(ev)
+    
+   
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+    moveLine(dx, dy)
+   
+    gStartPos = pos
+    
+    renderMeme()
+}
+
+function onUp() {
+  
+    setLineDrag(false)
+    document.body.style.cursor = 'default'
+}
+
+
+
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+
+    if (TOUCH_EVS.includes(ev.type)) {
+      
+        ev.preventDefault()
+        
+        ev = ev.changedTouches[0]
+        
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
 }
 

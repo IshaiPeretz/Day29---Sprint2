@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/meme-editor.css">
     <link rel="stylesheet" href="css/mq.css">
     <link rel="stylesheet" href="css/typography.css">
-   
+
 
 
 </head>
@@ -48,7 +48,10 @@
 
         <section class="meme-editor" hidden>
             <div class="canvas-container">
-                <canvas width="500" height="500" onclick="onClick(event)" ></canvas>
+                <canvas width="500" height="500" onclick="onClick(event)" onmousedown="onDown(event)"
+                    ontouchstart="onDown(event)" onmouseup="onUp()" ontouchend="onUp()" onmousemove="onMove(event)"
+                    ontouchmove="onMove(event)">
+                </canvas>
             </div>
 
             <section class="meme-edit">
@@ -59,7 +62,7 @@
                     <button class="btn" onclick="onDeleteLine()"><i class="fa-solid fa-delete-left"></i></button>
                     <select name="font-selector" id="" onchange="onSetFont(this.value,this)">
                         <option value="Arial" selected>Arial</option>
-                        <option value="Poppins" >Poppins</option>
+                        <option value="Poppins">Poppins</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Impact">Impact</option>
                         <option value="Verdana">Verdana</option>
@@ -68,12 +71,12 @@
                     <button class="btn" onclick="onReset()"><i class="fa-solid fa-trash-can"></i></button>
                 </section>
 
-                <section class = "emoji-bar grid">
-                    <button class = "btn" onclick = "addEmoji(this)">😎</button>
-                    <button class = "btn" onclick = "addEmoji(this)">🤣</button>
-                    <button class = "btn" onclick = "addEmoji(this)">😴</button>
-                    <button class = "btn" onclick = "addEmoji(this)">🤩</button>
-                    <button class = "btn" onclick = "addEmoji(this)">😊</button>
+                <section class="emoji-bar grid">
+                    <button class="btn" onclick="addEmoji(this)">😎</button>
+                    <button class="btn" onclick="addEmoji(this)">🤣</button>
+                    <button class="btn" onclick="addEmoji(this)">😴</button>
+                    <button class="btn" onclick="addEmoji(this)">🤩</button>
+                    <button class="btn" onclick="addEmoji(this)">😊</button>
                 </section>
 
 
@@ -83,8 +86,7 @@
                     <button class="btn" onclick="onChangeFontSize(-2)">A-</button>
                     <button class="btn" onclick="onChangePosition(-5)"><i class="fa-solid fa-arrow-up"></i></button>
                     <button class="btn" onclick="onChangePosition(5)"><i class="fa-solid fa-arrow-down"></i></button>
-                    <button class="btn" onclick="onSetAlignment('left')"><i
-                            class="fa-solid fa-align-left"></i></button>
+                    <button class="btn" onclick="onSetAlignment('left')"><i class="fa-solid fa-align-left"></i></button>
                     <button class="btn" onclick="onSetAlignment('center')"><i
                             class="fa-solid fa-align-center"></i></button>
                     <button class="btn" onclick="onSetAlignment('right')"><i

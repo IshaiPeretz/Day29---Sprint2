@@ -33,36 +33,24 @@ var gMeme = {
         ]
 }
 
-// var gMeme = {
-//     selectedImgId: 1,
-//     selectedLineIdx: 0,
-//     lines:
-//         [{
-//             txt: 'Enter Text here',
-//             size: 20,
-//             color: 'white',
-//             y: 50,
-//             x: 50,
-//             txtPos: 'left',
-//             font: 'Arial',
-//             idx: 0
-
-//         }
-//         ]
-// }
 
 
+function getMemeLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+
+}
 function resetMemeEdit() {
     gMeme.lines = [
         {
             txt: 'Enter Text here',
             size: 20,
             color: 'white',
-            y: gElCanvas.width*0.1,
-            x: gElCanvas.height*0.1,
+            y: gElCanvas.width * 0.1,
+            x: gElCanvas.height * 0.1,
             txtPos: 'left',
             font: 'Arial',
-            idx: 0
+            idx: 0,
+            isDrag: false
         }
     ]
     gMeme.selectedLineIdx = 0
@@ -80,9 +68,9 @@ function getMeme() {
 
 function getNextLinePos() {
     const lines = gMeme.lines
-    if (lines.length === 0) return { x: gElCanvas.width*0.1, y: gElCanvas.height*0.1 }
-    else if (lines.length === 1) return { x:gElCanvas.width*0.1, y: gElCanvas.height*0.9}
-    else if (lines.length === 2) return { x: gElCanvas.width*0.1, y:gElCanvas.height*0.5 }
+    if (lines.length === 0) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.1 }
+    else if (lines.length === 1) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.9 }
+    else if (lines.length === 2) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.5 }
     const lastLine = lines[lines.length - 1]
     const diffX = 10
     const diffY = 10
@@ -99,7 +87,8 @@ function addLine(txt = 'Enter Text here') {
         y: position.y,
         x: position.x,
         txtPos: 'left',
-        font: 'Arial'
+        font: 'Arial',
+        isDrag: false
     }
 
 
@@ -136,16 +125,16 @@ function setPosition(val) {
 function setTextAlign(pos) {
     const currLine = gMeme.lines[gMeme.selectedLineIdx]
 
-    if (pos === 'left')  currLine.x = gElCanvas.width*0.1
-    else if (pos === 'center')  currLine.x = gElCanvas.width*0.5
-    else if (pos === 'right')  currLine.x = gElCanvas.width*0.9
-  
+    if (pos === 'left') currLine.x = gElCanvas.width * 0.1
+    else if (pos === 'center') currLine.x = gElCanvas.width * 0.5
+    else if (pos === 'right') currLine.x = gElCanvas.width * 0.9
+
     currLine.txtPos = pos
 }
 
 function setLineFont(val) {
     gMeme.lines[gMeme.selectedLineIdx].font = val
-    
+
 }
 
 function setImg(id) {
@@ -160,13 +149,14 @@ function deleteLine() {
 
 function checkPosition(x, y) {
     const lines = gMeme.lines
-    const idx = lines.findIndex(line => line.rect.x <= x && x <= line.rect.x + line.rect.width
-        && line.rect.y <= y && y <= line.rect.y + line.rect.height
+    const idx = lines.findIndex(line => x >= line.rect.x && x <= line.rect.x + line.rect.width
+        && y >= line.rect.y && y <= line.rect.y + line.rect.height
     )
     if (idx !== -1) {
         gMeme.selectedLineIdx = idx
-
+        return true
     }
+    return false
 }
 
 
@@ -179,4 +169,17 @@ function setFilter(filter) {
     gFilteredImgs = images
 }
 
+function setLineDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
 
+}
+
+function moveLine(dx, dy) {
+    const line = getMemeLine()
+    line.x += dx
+    line.y += dy
+    
+    
+
+
+}
