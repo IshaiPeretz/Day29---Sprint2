@@ -34,7 +34,7 @@ function renderMeme() {
             line.textWidth = textWidth
 
 
-            let x = line.x
+            let x = line.x -5
             if (line.txtPos === 'right') x = line.x - textWidth
             else if (line.txtPos === 'center') x = line.x - textWidth / 2
 
@@ -42,13 +42,13 @@ function renderMeme() {
 
             line.rect = {
                 x: x,
-                y: line.y - line.size,
-                width: textWidth,
-                height: line.size + 10
+                y: line.y - line.size -5 ,
+                width: textWidth +10,
+                height: line.size + 15
             }
 
             gCtx.fillText(line.txt, line.x, line.y)
-
+            
         })
 
         const currLine = meme.lines[meme.selectedLineIdx]
@@ -126,7 +126,7 @@ function onClick(ev) {
     const { offsetX, offsetY } = ev
     console.log(offsetX, offsetY)
     const scaleX = gElCanvas.width / gElContainer.offsetWidth
-    const scaleY = gElCanvas.width / gElContainer.offsetHeight
+    const scaleY = gElCanvas.height / gElContainer.offsetHeight
 
     const actualX = offsetX * scaleX
     const actualY = offsetY * scaleY
