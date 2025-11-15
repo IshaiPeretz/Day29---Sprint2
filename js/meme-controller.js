@@ -64,8 +64,6 @@ function renderMeme() {
 
 }
 
-
-
 function onTextInput(text) {
     gIsUserTyping = true
     setLineText(text)
