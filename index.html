@@ -35,11 +35,21 @@
     </header>
 
 
-    <main>
-        <search class="search-bar">
-            <input name="search" id="search" placeholder="Search Meme Template" oninput="onSearchBy(this.value)">
+    <main class="main-layout">
+        <search class="search-block">
+            <search class="search-bar ">
+                <input name="search" id="search" placeholder="Search Meme Template" oninput="onSearchBy(this.value)">
+                <section class = "btns">
+                    <button class="keyword-btn more" onclick="onClearFilter('')">Clear</button>
+                    <button class="keyword-btn more" onclick="onShowMore(this)">More...</button>
+                </section>
+            </search>
+            <search name="search-selector" class="button-container" id="search-selector">
+            </search>
         </search>
         <section class="image-gallery">
+
+
 
         </section>
 
@@ -53,7 +63,6 @@
                     ontouchmove="onMove(event)">
                 </canvas>
 
-                <canvas width = "500" height = "500"class="download-canvas" hidden></canvas>
             </div>
 
             <section class="meme-edit">
@@ -97,9 +106,9 @@
                 </section>
 
                 <section class="links flex space-between">
-                    <button class="btn link grid align-items" onclick="onDownloadImage()">Download<i class="fa-solid fa-download"></i></button>
-                    <!-- <a href="#" class="btn link grid align-items" onclick="onDownloadImage(this)"
-                        download="my-meme.jpg">Download<i class="fa-solid fa-download"></i></a> -->
+                    <button class="btn link grid align-items" onclick="onDownloadImage()">Download<i
+                            class="fa-solid fa-download"></i></button>
+
 
                     <form method="POST" enctype="multipart/form-data" onsubmit="onShareImg(event)">
                         <button class="btn link" type="submit">Share <i

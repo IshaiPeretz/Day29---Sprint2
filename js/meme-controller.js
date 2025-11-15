@@ -11,7 +11,7 @@ function onInit() {
     renderGallery()
     renderMeme()
     addLine()
-
+    
 }
 
 
@@ -107,6 +107,38 @@ function onSwitchLine() {
     renderMeme()
 }
 
+function addEmoji(elBtn) {
+    addLine(elBtn.innerText)
+    renderMeme()
+}
+
+function onChangePosition(val) {
+    setPosition(val)
+    renderMeme()
+
+}
+
+function onSetAlignment(pos) {
+    setTextAlign(pos)
+    renderMeme()
+
+}
+
+function onReset() {
+    resetMemeEdit()
+    gElMemeInputText.value = ''
+    gElFontSelector.value = 'Arial'
+    gElTextColor.value = '#000000'
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+    gElMemeInputText.focus()
+}
+
+
 function onDownloadImage() {
 
     const meme = getMeme()
@@ -135,12 +167,10 @@ function onDownloadImage() {
     }
 }
 
-
-function addEmoji(elBtn) {
-    addLine(elBtn.innerText)
-    renderMeme()
+function resizeCanvas() {
+    gElCanvas.width = gElContainer.offsetWidth
+    gElCanvas.height = gElContainer.offsetHeight
 }
-
 
 
 function renderImg(img) {
@@ -163,33 +193,6 @@ function onClick(ev) {
     gIsUserTyping = false
     renderMeme()
 
-}
-
-
-function onChangePosition(val) {
-    setPosition(val)
-    renderMeme()
-
-}
-
-function onSetAlignment(pos) {
-    setTextAlign(pos)
-    renderMeme()
-
-}
-
-function onReset() {
-    resetMemeEdit()
-    gElMemeInputText.value = ''
-    gElFontSelector.value = 'Arial'
-    gElTextColor.value = '#000000'
-    renderMeme()
-}
-
-function onDeleteLine() {
-    deleteLine()
-    renderMeme()
-    gElMemeInputText.focus()
 }
 
 
@@ -229,10 +232,6 @@ async function uploadImg(imgData, onSuccess) {
 }
 
 
-function resizeCanvas() {
-    gElCanvas.width = gElContainer.offsetWidth
-    gElCanvas.height = gElContainer.offsetHeight
-}
 
 
 function onDown(ev) {

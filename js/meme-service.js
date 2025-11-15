@@ -1,7 +1,8 @@
 'use strict'
-const STORAGE_KEY = 'memesDB'
-let gFilteredImgs = []
 
+const STORAGE_KEY = 'keywordsDB'
+let gFilteredImgs
+let gKeywords
 
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', keywords: ['trump', 'funny', 'president'] },
@@ -24,6 +25,8 @@ var gImgs = [
     { id: 18, url: 'imgs/meme-imgs (square)/18.jpg', keywords: ['toy story', 'woody', 'buzz'] },
 
 ]
+
+
 
 var gMeme = {
     selectedImgId: 1,
@@ -57,7 +60,7 @@ function resetMemeEdit() {
 }
 
 function getImgs() {
-    if (!gFilteredImgs || !gFilteredImgs.length) return gImgs
+    if (!gFilteredImgs) return gImgs
     return gFilteredImgs
 }
 
@@ -90,8 +93,6 @@ function addLine(txt = 'Enter Text here') {
         font: 'Arial',
         isDrag: false
     }
-
-
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
@@ -143,7 +144,6 @@ function setImg(id) {
 
 function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-    console.log(gMeme)
 
 }
 
@@ -160,26 +160,70 @@ function checkPosition(x, y) {
 }
 
 
+function getKeywords() {
+    gKeywords = loadFromStorage(STORAGE_KEY)
+    if (!gKeywords) {
+        let imgWords = gImgs.map(img => img.keywords)
+
+        let allKeywords = imgWords.reduce((acc, keyword) => {
+            if (Array.isArray(keyword)) acc.push(...keyword)
+            else acc.push(keyword)
+
+            return acc
+        }, [])
+
+        gKeywords = allKeywords.reduce((acc, keyword) => {
+
+            if (!acc[keyword]) acc[keyword] = 0
+            return acc
+        }, {})
+    }
+    return gKeywords
+}
+
+
+
+
+
+function filterByKeywords(filter) {
+    let images = gImgs.filter(img =>
+        img.keywords.some(word =>
+            word.toLowerCase().includes(filter.toLowerCase()))
+    )
+    if (filter !== '') gKeywords[filter]++
+
+    _saveKeywordsToStorage()
+    gFilteredImgs = images
+
+
+}
+
+
 function setFilter(filter) {
     let images = gImgs.filter(img =>
         img.keywords.some(word =>
             word.toLowerCase().includes(filter.toLowerCase()))
     )
+    if (images.length === 0) gFilteredImgs = []
 
-    gFilteredImgs = images
+    else gFilteredImgs = images
+
+    console.log(gFilteredImgs)
+
 }
 
 function setLineDrag(isDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
-
 }
 
 function moveLine(dx, dy) {
     const line = getMemeLine()
     line.x += dx
     line.y += dy
-    
-    
+}
 
 
+
+function _saveKeywordsToStorage() {
+    saveToStorage(STORAGE_KEY, gKeywords)
 }

@@ -1,11 +1,11 @@
-
 .image-gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     background-color: var(--clr-primary--1);
     padding: var(--padding-main);
     border-radius: var(--border-radius-1);
+    color: var(--clr-primary--2);
 }
 
 
@@ -19,16 +19,59 @@ img {
     border-radius: var(--border-radius-1);
 }
 
-.search-bar{
+.search-bar {
     display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
 
     input {
         height: 3em;
         background-color: var(--clr-primary--1);
         color: #fff;
         padding: var(--padding-main);
-        margin-bottom: 10px;
+        
         border-radius: 37px;
         border: 1px solid var(--clr-primary--2);
     }
+
+    .btns {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+       
+      
+    }
+}
+
+.keyword-btn {
+    background-color: var(--clr-primary-base);
+    border: 1px solid var(--clr-primary--2);
+    color: var(--clr-primary--2);
+    padding: 5px 20px 5px 20px;
+    border-radius: 37px;
+    margin: 5px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--clr-primary--2);
+        color: #fff;
+    }
+
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 3.125em;
+    overflow: hidden;
+
+    &.show-more {
+        max-height: 500px;
+    }
+}
+
+.more {
+    justify-self: start;
+
+
 }

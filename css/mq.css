@@ -7,17 +7,22 @@
 
     .meme-edit {
         align-items: center;
-        
+
     }
 }
 
+/* 
+    .search-selector {
+        grid-template-columns: repeat(5, 1fr);
+    }
 
+     */
 
 
 
 
 @media (min-width:900px) {
-     .main-layout {
+    .main-layout {
         grid-template-columns: minmax(16px, 1fr) minmax(auto, 1260px) minmax(16px, 1fr);
 
         >* {
@@ -37,13 +42,13 @@
 
     .meme-editor {
         column-gap: 20px;
-        
-        
+
+
     }
 
     .canvas-container {
         width: 500px;
-       
+
     }
 
     .meme-edit {
@@ -63,5 +68,10 @@
 
     }
 
-  
+    .search-selector {
+
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+
 }
