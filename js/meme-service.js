@@ -32,8 +32,7 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines:
-        [
-        ]
+        []
 }
 
 
@@ -46,12 +45,12 @@ function resetMemeEdit() {
     gMeme.lines = [
         {
             txt: 'Enter Text here',
-            size: 20,
+            size: 30,
             color: 'white',
-            y: gElCanvas.width * 0.1,
-            x: gElCanvas.height * 0.1,
+            y: gElCanvas.height * 0.2,
+            x: gElCanvas.width * 0.1,
             txtPos: 'left',
-            font: 'Arial',
+            font: 'Impact',
             idx: 0,
             isDrag: false
         }
@@ -71,8 +70,8 @@ function getMeme() {
 
 function getNextLinePos() {
     const lines = gMeme.lines
-    if (lines.length === 0) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.1 }
-    else if (lines.length === 1) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.9 }
+    if (lines.length === 0) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.2 }
+    else if (lines.length === 1) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.8 }
     else if (lines.length === 2) return { x: gElCanvas.width * 0.1, y: gElCanvas.height * 0.5 }
     const lastLine = lines[lines.length - 1]
     const diffX = 10
@@ -85,12 +84,12 @@ function addLine(txt = 'Enter Text here') {
     const position = getNextLinePos()
     const line = {
         txt: txt,
-        size: 20,
+        size: 30,
         color: 'white',
         y: position.y,
         x: position.x,
         txtPos: 'left',
-        font: 'Arial',
+        font: 'Impact',
         isDrag: false
     }
     gMeme.lines.push(line)

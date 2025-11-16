@@ -34,7 +34,7 @@ function renderMeme() {
             gCtx.textAlign = line.txtPos
             const textWidth = gCtx.measureText(line.txt).width
             line.textWidth = textWidth
-
+            
 
             let x = line.x - 5
             if (line.txtPos === 'right') x = line.x - 5 - textWidth
@@ -50,12 +50,12 @@ function renderMeme() {
             }
 
             gCtx.fillText(line.txt, line.x, line.y)
-
+           
         })
 
         const currLine = meme.lines[meme.selectedLineIdx]
         if (!gIsUserTyping && currLine) {
-            gCtx.fillStyle = ' rgba(0, 0, 0, 0.3)'
+            gCtx.fillStyle = ' rgba(0, 0, 0, 0.2)'
             const rect = currLine.rect
             gCtx.fillRect(rect.x, rect.y, rect.width, rect.height)
 

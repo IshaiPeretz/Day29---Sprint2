@@ -2,6 +2,7 @@
 
     .image-gallery {
         grid-template-columns: repeat(3, 1fr);
+       
     }
 
     .meme-edit {
@@ -12,8 +13,9 @@
 
 @media (min-width:900px) {
     .main-layout {
-        
+
         grid-template-columns: minmax(16px, 1fr) minmax(auto, 1260px) minmax(16px, 1fr);
+
         >* {
             grid-column: 2;
         }
@@ -21,10 +23,15 @@
 
     .image-gallery {
         grid-template-columns: repeat(5, 1fr);
+
     }
 
     .main-header {
         height: 75px;
+    }
+
+    .meme-editor {
+        height: 80vh;
     }
 
     .canvas-container {
@@ -42,6 +49,7 @@
 
     .main-header {
         border-radius: 37px;
+
         .logo {
 
             font-size: 1.375em
