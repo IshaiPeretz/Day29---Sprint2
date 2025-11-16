@@ -6,6 +6,7 @@
     padding: var(--padding-main);
     border-radius: var(--border-radius-1);
     color: var(--clr-primary--2);
+    justify-items: center;
 }
 
 
@@ -17,19 +18,23 @@
 img {
     width: 100%;
     border-radius: var(--border-radius-1);
+
 }
 
 .search-bar {
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+
 
     input {
         height: 3em;
         background-color: var(--clr-primary--1);
         color: #fff;
         padding: var(--padding-main);
-        
+
         border-radius: 37px;
         border: 1px solid var(--clr-primary--2);
     }
@@ -37,9 +42,8 @@ img {
     .btns {
         display: flex;
         align-items: center;
-        justify-content: end;
-       
-      
+        justify-content: start;
+        gap: 5px;
     }
 }
 
@@ -49,7 +53,11 @@ img {
     color: var(--clr-primary--2);
     padding: 5px 20px 5px 20px;
     border-radius: 37px;
-    margin: 5px;
+
+    &:not(.more) {
+        margin-bottom: 10px;
+    }
+
 
     &:hover {
         cursor: pointer;
@@ -60,18 +68,19 @@ img {
 }
 
 .button-container {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    max-height: 2.5em;
+    height: 40px;
     overflow: hidden;
+    align-items: center;
 
     &.show-more {
-        max-height: 500px;
+        height: fit-content;
     }
 }
 
 .more {
     justify-self: start;
-
 
 }

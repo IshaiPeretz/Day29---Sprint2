@@ -1,6 +1,5 @@
 'use strict'
 
-
 function renderGallery() {
     const elGallery = document.querySelector('.image-gallery')
     let stringHTML
@@ -42,9 +41,13 @@ function onSearchBy(filter) {
 }
 
 function onSearchByKeyword(filter) {
+
+    // gElBtnContainer.style.height = gElBtnContainer.offsetHeight + 1 + 'px'
     filterByKeywords(filter)
     renderGallery()
 }
+
+
 function onClearFilter(filter) {
     filterByKeywords(filter)
     renderGallery()
@@ -83,7 +86,7 @@ function renderSearchSelector() {
         let value = keywords[key]
 
 
-        stringHTML += `<button style = "font-size: calc(1em + ${value}px)" class = "keyword-btn" onclick="onSearchByKeyword(this.innerText,this)" >${key}</button>`
+        stringHTML += `<button style = "font-size: calc(1em + ${value}px)" class = "keyword-btn" onclick="onSearchByKeyword(this.innerText)" >${key}</button>`
 
     }
     gElBtnContainer.innerHTML = stringHTML
